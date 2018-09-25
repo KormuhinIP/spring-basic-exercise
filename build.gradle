@@ -1,0 +1,18 @@
+
+plugins {
+    id 'java'
+    id 'application'
+}
+
+def mainClassName = 'App'
+
+def thymleafVersion = "2.1.6.RELEASE"
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web:2.0.4.RELEASE'
+    compile 'javax.inject:javax.inject:1'
+}
+
+repositories {
+    mavenCentral()
+}
