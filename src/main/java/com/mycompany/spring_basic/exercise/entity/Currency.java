@@ -1,5 +1,6 @@
 package com.mycompany.spring_basic.exercise.entity;
 
+
 public class Currency {
     private final String id;
     private String code;
@@ -36,6 +37,9 @@ public class Currency {
     }
 
     public void remove() {
+
         throw new RuntimeException("Not implemented yet");
     }
+
+
 }

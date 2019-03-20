@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.springframework.org/schema/beans"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+>
+
+    <!-- <context:annotation-config></context:annotation-config>-->
+    <context:annotation-config/>
+
+    <bean id="currencyRepositoryInMemory" class="com.mycompany.spring_basic.exercise.impl.CurrencyRepositoryInMemory"/>
+
+
+    <bean id="currencyDaoWithLocalCache" class="com.mycompany.spring_basic.exercise.impl.CurrencyDaoWithLocalCache"/>
+
+
+    <bean id="currency" class="com.mycompany.spring_basic.exercise.entity.Currency" scope="prototype">
+        <constructor-arg index="0" value="${id}"/>
+    </bean>
+
+    <!-- <bean id="" class="com.mycompany.spring_basic.exercise.impl.CurrencyRepositoryInMemory" />-->
+    <!--
+        <bean id="newCurrency" class="com.mycompany.spring_basic.exercise.impl.CurrencyRepositoryInMemory" lazy-init="true"
+              factory-method="create" factory-bean="currency">
+            <constructor-arg value="This" />
+            <constructor-arg type="boolean">
+                <value>true</value>
+            </constructor-arg>
+        </bean>-->
+
+
+    <!-- Importing java-config class, which are annotated with @Configuration -->
+    <bean id="springConfig" class="com.mycompany.spring_basic.exercise.SpringConfig"/>
+
+    <!--  <bean id="listCurrency" class="com.mycompany.spring_basic.exercise.impl.CurrencyRepositoryInMemory">
+          <property name="list"/>
+      </bean>-->
+
+
+</beans>
+
+

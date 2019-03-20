@@ -4,19 +4,26 @@ import com.mycompany.spring_basic.exercise.api.CurrencyDao;
 import com.mycompany.spring_basic.exercise.api.CurrencyRepository;
 import com.mycompany.spring_basic.exercise.entity.Currency;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
 public class Main {
 
+
     public static void main(String[] args) {
-        ApplicationContext context = ;
+        ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 
         CurrencyRepository repository = context.getBean(CurrencyRepository.class);
 
         repository.create("USD", true);
         Currency eur = repository.create("EUR", true);
         repository.create("RUB", false);
+
+
+        for (Currency currency : repository.find(false)) {
+            System.out.println(currency.getCode());
+        }
 
         CurrencyDao dao = context.getBean(CurrencyDao.class);
 
@@ -27,6 +34,8 @@ public class Main {
         checkActualActiveCurrencies(repository);
 
         checkDaoCachedList(dao);
+
+
     }
 
 
