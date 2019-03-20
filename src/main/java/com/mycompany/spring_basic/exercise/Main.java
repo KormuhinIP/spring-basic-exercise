@@ -22,8 +22,9 @@ public class Main {
 
 
         for (Currency currency : repository.find(false)) {
-            System.out.println(currency.getCode());
+            System.out.println(currency.getId());
         }
+
 
         CurrencyDao dao = context.getBean(CurrencyDao.class);
 

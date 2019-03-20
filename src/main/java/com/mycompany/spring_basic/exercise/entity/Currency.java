@@ -1,14 +1,17 @@
 package com.mycompany.spring_basic.exercise.entity;
 
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Currency {
     private final String id;
     private String code;
     private boolean active;
 
-
+    private static final AtomicInteger AUTO_ID = new AtomicInteger(1);
     public Currency(String id) {
-        this.id = id;
+
+        this.id = String.valueOf(AUTO_ID.getAndIncrement());
     }
 
 

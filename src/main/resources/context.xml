@@ -15,7 +15,8 @@
     <bean id="currencyRepositoryInMemory" class="com.mycompany.spring_basic.exercise.impl.CurrencyRepositoryInMemory"/>
 
 
-    <bean id="currencyDaoWithLocalCache" class="com.mycompany.spring_basic.exercise.impl.CurrencyDaoWithLocalCache"/>
+    <bean id="currencyDaoWithLocalCache" class="com.mycompany.spring_basic.exercise.impl.CurrencyDaoWithLocalCache"
+          lazy-init="true"/>
 
 
     <bean id="currency" class="com.mycompany.spring_basic.exercise.entity.Currency" scope="prototype">
