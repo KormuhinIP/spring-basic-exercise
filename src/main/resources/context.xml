@@ -2,44 +2,50 @@
 <beans
         xmlns:context="http://www.springframework.org/schema/context"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:util="http://www.springframework.org/schema/util"
         xmlns="http://www.springframework.org/schema/beans"
         xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd"
 >
 
-    <!-- <context:annotation-config></context:annotation-config>-->
+
     <context:annotation-config/>
 
-    <bean id="currencyRepositoryInMemory" class="com.mycompany.spring_basic.exercise.impl.CurrencyRepositoryInMemory"/>
+    <bean id="currencyRepositoryInMemory" class="com.mycompany.spring_basic.exercise.impl.CurrencyRepositoryInMemory">
+        <property name="listCurrency" ref="listCurrencyUtil"/>
+        <property name="listActive" ref="listActiveUtil"/>
 
+    </bean>
+    <util:list id="listCurrencyUtil" list-class="java.util.ArrayList">
+    </util:list>
 
-    <bean id="currencyDaoWithLocalCache" class="com.mycompany.spring_basic.exercise.impl.CurrencyDaoWithLocalCache"
-          lazy-init="true"/>
+    <util:list id="listActiveUtil" list-class="java.util.ArrayList">
+    </util:list>
+
+    <!--  <util:list id="listActiveDao" list-class="java.util.ArrayList">
+         <list merge="true"/>
+
+              </util:list>-->
 
 
     <bean id="currency" class="com.mycompany.spring_basic.exercise.entity.Currency" scope="prototype">
         <constructor-arg index="0" value="${id}"/>
+
     </bean>
 
-    <!-- <bean id="" class="com.mycompany.spring_basic.exercise.impl.CurrencyRepositoryInMemory" />-->
-    <!--
-        <bean id="newCurrency" class="com.mycompany.spring_basic.exercise.impl.CurrencyRepositoryInMemory" lazy-init="true"
-              factory-method="create" factory-bean="currency">
-            <constructor-arg value="This" />
-            <constructor-arg type="boolean">
-                <value>true</value>
-            </constructor-arg>
-        </bean>-->
+    <bean id="currencyDaoWithLocalCache" class="com.mycompany.spring_basic.exercise.impl.CurrencyDaoWithLocalCache"
+          lazy-init="true">
+        <!-- <property name="listActive" ref="listActiveDao"/>-->
+        <property name="listActive" value="#{currencyRepositoryInMemory.find(true)}"/>
+    </bean>
 
 
     <!-- Importing java-config class, which are annotated with @Configuration -->
     <bean id="springConfig" class="com.mycompany.spring_basic.exercise.SpringConfig"/>
 
-    <!--  <bean id="listCurrency" class="com.mycompany.spring_basic.exercise.impl.CurrencyRepositoryInMemory">
-          <property name="list"/>
-      </bean>-->
 
 
 </beans>

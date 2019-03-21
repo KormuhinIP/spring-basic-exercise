@@ -21,18 +21,17 @@ public class Main {
         repository.create("RUB", false);
 
 
-        for (Currency currency : repository.find(false)) {
-            System.out.println(currency.getId());
-        }
-
 
         CurrencyDao dao = context.getBean(CurrencyDao.class);
 
+
         checkActiveCurrencyListFromDao(dao);
+
 
         eur.remove();
 
         checkActualActiveCurrencies(repository);
+
 
         checkDaoCachedList(dao);
 
