@@ -8,22 +8,15 @@ import java.util.List;
 
 public class CurrencyDaoWithLocalCache implements CurrencyDao {
 
-    List<Currency> list = new ArrayList<>();
 
     private List<Currency> listActive;
 
-
     public void setListActive(List<Currency> listActive) {
-        this.listActive = listActive;
-        list.addAll(listActive);
-
+        this.listActive = new ArrayList<>(listActive);
     }
-
-
 
     @Override
     public List<Currency> getActive() {
-
-        return list;
+        return listActive;
     }
 }

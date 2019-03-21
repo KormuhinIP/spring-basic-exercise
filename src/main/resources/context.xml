@@ -17,8 +17,10 @@
     <bean id="currencyRepositoryInMemory" class="com.mycompany.spring_basic.exercise.impl.CurrencyRepositoryInMemory">
         <property name="listCurrency" ref="listCurrencyUtil"/>
         <property name="listActive" ref="listActiveUtil"/>
-
+        <!--  <lookup-method name="create" bean="currency"/>-->
     </bean>
+
+
     <util:list id="listCurrencyUtil" list-class="java.util.ArrayList">
     </util:list>
 

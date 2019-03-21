@@ -21,7 +21,6 @@ public class Main {
         repository.create("RUB", false);
 
 
-
         CurrencyDao dao = context.getBean(CurrencyDao.class);
 
 

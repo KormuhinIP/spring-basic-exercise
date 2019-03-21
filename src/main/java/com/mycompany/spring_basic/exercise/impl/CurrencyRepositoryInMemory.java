@@ -14,10 +14,8 @@ public class CurrencyRepositoryInMemory implements CurrencyRepository {
     @Autowired
     ApplicationContext context;
 
-
     private List<Currency> listCurrency;
     private List<Currency> listActive;
-
 
     public void setListCurrency(List<Currency> listCurrency) {
         this.listCurrency = listCurrency;
@@ -26,7 +24,6 @@ public class CurrencyRepositoryInMemory implements CurrencyRepository {
     public void setListActive(List<Currency> listActive) {
         this.listActive = listActive;
     }
-
 
 
     @Override
