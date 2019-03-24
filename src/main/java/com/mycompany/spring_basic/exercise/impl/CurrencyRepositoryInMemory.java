@@ -15,6 +15,9 @@ public class CurrencyRepositoryInMemory implements CurrencyRepository {
     ApplicationContext context;
 
     private List<Currency> listCurrency;
+
+
+
     private List<Currency> listActive;
 
     public void setListCurrency(List<Currency> listCurrency) {

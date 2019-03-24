@@ -3,7 +3,10 @@ package com.mycompany.spring_basic.exercise;
 import com.mycompany.spring_basic.exercise.api.CurrencyDao;
 import com.mycompany.spring_basic.exercise.api.CurrencyRepository;
 import com.mycompany.spring_basic.exercise.entity.Currency;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
@@ -59,5 +62,12 @@ public class Main {
         if (currencies.size() != 1) {
             throw new RuntimeException("After remove should exist only one USD currency");
         }
+
+
+    }
+
+    public CacheManager cacheManager() {
+        return new ConcurrentMapCacheManager("entities");
     }
 }
+
